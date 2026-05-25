@@ -1,0 +1,41 @@
+{
+  "name": "vociq",
+  "version": "1.0.0",
+  "description": "Voice Dashboard Client",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win",
+    "publish": "electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.vociq.app",
+    "productName": "Vociq",
+    "directories": { "output": "dist" },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerLanguages": ["de_DE"],
+      "language": "1031"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "M3Sh-de",
+      "repo": "vociq"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "electron-log": "^5.1.2",
+    "electron-updater": "^6.1.7",
+    "mediasoup-client": "^3.7.4",
+    "socket.io-client": "^4.7.2"
+  }
+}
