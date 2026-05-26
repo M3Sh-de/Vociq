@@ -1,0 +1,18 @@
+# Build output
+client/dist/
+client/node_modules/
+server/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+.backups/
+
+# Env
+.env

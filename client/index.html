@@ -35,29 +35,33 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
 /* Sidebar */
 .sidebar{width:220px;background:var(--s1);border-right:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0;}
 .sidebar-top{padding:12px 10px 8px;}
-.srv-row{display:flex;gap:5px;margin-bottom:8px;}
-.srv-input{flex:1;background:var(--s2);border:1px solid var(--bd2);border-radius:6px;padding:7px 9px;font-size:12px;color:var(--t1);font-family:var(--mono);outline:none;}
-.srv-input:focus{border-color:rgba(255,255,255,.22);}
-.srv-btn{padding:7px 10px;background:var(--green-bg);border:1px solid var(--green);border-radius:6px;color:var(--green);font-size:12px;cursor:pointer;white-space:nowrap;transition:opacity .1s;font-family:var(--font);}
-.srv-btn:hover{opacity:.8;}
-.srv-btn.disconnect{background:var(--red-bg);border-color:var(--red);color:var(--red);}
+.srv-row{display:flex;gap:6px;margin-bottom:8px;}
+.srv-input{flex:1;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:8px 11px;font-size:12px;color:var(--t1);font-family:var(--mono);outline:none;transition:border-color .2s,box-shadow .2s;}
+.srv-input:focus{border-color:var(--green);box-shadow:0 0 0 2px rgba(29,158,117,.15);}
+.srv-btn{padding:8px 14px;background:var(--green);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .15s,transform .1s;font-family:var(--font);}
+.srv-btn:hover{opacity:.88;}
+.srv-btn:active{transform:scale(.97);}
+.srv-btn.disconnect{background:var(--red);color:#fff;}
 
 /* Status bar */
-.status-bar{display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:11px;background:var(--s2);border-radius:6px;margin-bottom:4px;min-height:30px;}
-.status-dot{width:6px;height:6px;border-radius:50%;background:var(--t4);flex-shrink:0;transition:background .3s;}
-.status-dot.ok{background:var(--green);box-shadow:0 0 5px var(--green);}
+.status-bar{display:flex;align-items:center;gap:8px;padding:8px 11px;font-size:11px;background:var(--s2);border-radius:8px;margin-bottom:4px;min-height:34px;transition:background .3s;}
+.status-bar.ok{background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.2);}
+.status-bar.error{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.2);}
+.status-bar.connecting{background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--t4);flex-shrink:0;transition:background .3s,box-shadow .3s;}
+.status-dot.ok{background:var(--green);box-shadow:0 0 6px rgba(29,158,117,.6);}
 .status-dot.connecting{background:var(--yellow);animation:pulse 1s infinite;}
-.status-dot.error{background:var(--red);}
-.status-text{flex:1;color:var(--t2);line-height:1.3;}
+.status-dot.error{background:var(--red);box-shadow:0 0 6px rgba(231,76,60,.5);}
+.status-text{flex:1;color:var(--t2);line-height:1.3;transition:color .2s;}
 .err-code{font-size:10px;color:var(--red);font-family:var(--mono);margin-top:1px;}
 
 .sidebar-section{font-size:10px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px 5px;}
 .rooms-list{flex:1;overflow-y:auto;padding:0 8px;}
 .rooms-list::-webkit-scrollbar{width:3px;}
 .rooms-list::-webkit-scrollbar-thumb{background:var(--s4);border-radius:2px;}
-.room-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:7px;cursor:pointer;transition:background .1s;margin-bottom:2px;}
-.room-item:hover{background:var(--s3);}
-.room-item.active{background:var(--s3);border-left:2px solid var(--green);}
+.room-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:7px;cursor:pointer;transition:background .2s,transform .15s;margin-bottom:2px;}
+.room-item:hover{background:var(--s3);transform:translateX(2px);}
+.room-item.active{background:var(--s3);border-left:2px solid var(--green);transform:translateX(2px);}
 .room-name{font-size:13px;display:flex;align-items:center;gap:7px;}
 .room-count{font-size:11px;color:var(--t3);background:var(--s4);border-radius:4px;padding:1px 6px;}
 .add-room-btn{display:flex;align-items:center;gap:7px;padding:9px 12px;background:none;border:none;color:var(--t2);font-size:13px;font-family:var(--font);cursor:pointer;width:100%;transition:color .1s;}
@@ -69,8 +73,8 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
 .user-avatar{width:32px;height:32px;border-radius:50%;background:var(--blue-bg);border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--blue);flex-shrink:0;}
 .user-name{font-size:13px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .voice-controls{display:flex;gap:5px;}
-.vc-btn{flex:1;padding:7px;background:var(--s2);border:1px solid var(--bd);border-radius:6px;color:var(--t2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .1s,color .1s,border-color .1s;}
-.vc-btn:hover{background:var(--s3);color:var(--t1);}
+.vc-btn{flex:1;padding:7px;background:var(--s2);border:1px solid var(--bd);border-radius:7px;color:var(--t2);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s,border-color .2s,transform .1s;}
+.vc-btn:hover{background:var(--s3);color:var(--t1);transform:translateY(-1px);}
 .vc-btn.active{background:var(--red-bg);border-color:var(--red);color:var(--red);}
 .vc-btn.ptt-on{background:var(--green-bg);border-color:var(--green);color:var(--green);}
 
@@ -172,7 +176,7 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
 /* Modal */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:200;}
 .modal{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--r);padding:1.5rem;width:320px;animation:pop .15s ease;}
-@keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes pop{from{transform:scale(.96) translateY(4px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
 .modal-title{font-size:15px;font-weight:700;margin-bottom:1.2rem;}
 .f{margin-bottom:12px;}
 .f label{display:block;font-size:11px;color:var(--t2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
@@ -186,8 +190,8 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
 .btn-ok:hover{opacity:.85;}
 
 /* Toast */
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--s2);border:1px solid var(--bd2);border-radius:6px;padding:8px 16px;font-size:12px;color:var(--t2);opacity:0;transition:opacity .2s;pointer-events:none;z-index:999;font-family:var(--mono);white-space:nowrap;}
-#toast.show{opacity:1;}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(4px);background:var(--s2);border:1px solid var(--bd2);border-radius:8px;padding:9px 18px;font-size:12px;color:var(--t2);opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:999;font-family:var(--mono);white-space:nowrap;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 #toast.err{background:var(--red-bg);border-color:var(--red);color:#ff8080;}
 
 /* Update banner */
@@ -229,6 +233,31 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
 .ts-ip-inp:focus{border-color:rgba(255,255,255,.22);}
 .ts-conn-btn{padding:7px 12px;background:var(--blue-bg);border:1px solid var(--blue);border-radius:6px;color:var(--blue);font-size:12px;cursor:pointer;white-space:nowrap;font-family:var(--font);}
 .ts-conn-btn:hover{opacity:.8;}
+
+
+.connected-server-name{font-size:13px;font-weight:600;color:var(--t1);padding:4px 2px 6px;letter-spacing:-0.01em;display:flex;align-items:center;gap:6px;}
+.u-stats{font-size:10px;color:var(--t3);font-family:var(--mono);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;}
+.u-stats span{display:inline-flex;align-items:center;gap:2px;}
+.stat-ping{color:var(--green);}
+.stat-ping.warn{color:var(--yellow);}
+.stat-ping.bad{color:var(--red);}
+.stat-ip{color:var(--t3);}
+.stat-time{color:var(--t3);}
+
+
+/* Right panel header */
+.right-panel-header{padding:10px 12px 6px;border-bottom:1px solid var(--bd);flex-shrink:0;}
+
+/* Settings modal */
+.settings-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;z-index:300;}
+.settings-modal{background:var(--s1);border:1px solid var(--bd2);border-radius:var(--r);width:360px;max-height:80vh;display:flex;flex-direction:column;animation:pop .15s ease;}
+.settings-modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px;border-bottom:1px solid var(--bd);flex-shrink:0;}
+.settings-modal-title{font-size:14px;font-weight:600;color:var(--t1);}
+.settings-close-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:2px 6px;border-radius:5px;transition:background .1s,color .1s;}
+.settings-close-btn:hover{background:var(--s3);color:var(--t1);}
+.settings-modal-body{overflow-y:auto;padding:14px 16px;}
+.settings-modal-body::-webkit-scrollbar{width:3px;}
+.settings-modal-body::-webkit-scrollbar-thumb{background:var(--s4);border-radius:2px;}
 
 </style>
 </head>
@@ -282,9 +311,15 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="sidebar-top">
-      <div class="srv-row">
-        <input class="srv-input" id="srv-addr" placeholder="IP:Port" value="localhost:3000"/>
-        <button class="srv-btn" id="conn-btn" onclick="toggleConnect()">Verbinden</button>
+      <div id="disconnected-ui">
+        <div class="srv-row">
+          <input class="srv-input" id="srv-addr" placeholder="IP:Port" value="localhost:3000"/>
+          <button class="srv-btn" id="conn-btn" onclick="toggleConnect()">Verbinden</button>
+        </div>
+      </div>
+      <div id="connected-ui" style="display:none;">
+        <div class="connected-server-name" id="connected-server-name"></div>
+        <button class="srv-btn disconnect" id="disconnect-btn" onclick="toggleConnect()" style="width:100%;margin-bottom:8px;">Trennen</button>
       </div>
       <div class="status-bar" id="status-bar">
         <div class="status-dot" id="status-dot"></div>
@@ -299,7 +334,7 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
     <div class="rooms-list" id="rooms-list">
       <div style="font-size:12px;color:var(--t3);padding:8px 10px;">Verbinde zuerst zum Server...</div>
     </div>
-    <button class="add-room-btn" onclick="showCreateRoom()">＋ Kanal erstellen</button>
+    <button class="add-room-btn" id="create-room-btn" onclick="showCreateRoom()" style="display:none;">＋ Kanal erstellen</button>
 
     <div class="sidebar-bottom">
       <div class="user-strip">
@@ -310,7 +345,7 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
         <button class="vc-btn" id="btn-mute"  onclick="toggleMute()"  title="Stumm (M)">🎤</button>
         <button class="vc-btn" id="btn-ptt"   onclick="togglePTT()"   title="Push-to-Talk (T)">📡</button>
         <button class="vc-btn" id="btn-leave" onclick="leaveRoom()"   title="Verlassen">📴</button>
-        <button class="vc-btn" onclick="showTab('settings')"          title="Einstellungen">⚙️</button>
+        <button class="vc-btn" onclick="openSettingsModal()"           title="Einstellungen">⚙️</button>
         <button class="vc-btn" id="btn-ts" onclick="showTSPanel()" title="TeamSpeak Web Client">🎧</button>
       </div>
     </div>
@@ -346,17 +381,13 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
     </div>
   </div>
 
-  <!-- Right panel -->
-  <div class="right-panel">
-    <div class="tabs">
-      <div class="tab active" id="tab-servers"  onclick="showTab('servers')">📋 Server</div>
-      <div class="tab"        id="tab-settings" onclick="showTab('settings')">⚙️ Einst.</div>
+  <!-- Right panel - only shown when servers exist -->
+  <div class="right-panel" id="right-panel" style="display:none;">
+    <div class="right-panel-header">
+      <span style="font-size:12px;font-weight:500;color:var(--t1);">Server</span>
     </div>
-
-    <!-- Server list -->
-    <div class="tab-content" id="panel-servers">
+    <div class="tab-content" id="panel-servers" style="padding-top:8px;">
       <div id="ip-list"><div style="font-size:12px;color:var(--t3);padding:4px 0;">Verbinde zum Server, um die Liste zu laden...</div></div>
-      <!-- Admin section -->
       <div class="admin-section">
         <div id="admin-logged-in" style="display:none;">
           <div class="admin-badge">⚙️ Admin-Modus aktiv</div>
@@ -372,48 +403,56 @@ body{background:var(--bg);color:var(--t1);font-family:var(--font);height:100vh;o
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Settings -->
-    <div class="tab-content" id="panel-settings" style="display:none;">
-      <div class="setting-row">
-        <div class="setting-lbl">Dein Name</div>
-        <input class="s-input" id="s-name" oninput="saveName()"/>
+  <!-- Settings Modal -->
+  <div class="settings-modal-bg" id="settings-modal" style="display:none;" onclick="closeSettings(event)">
+    <div class="settings-modal">
+      <div class="settings-modal-header">
+        <span class="settings-modal-title">⚙️ Einstellungen</span>
+        <button class="settings-close-btn" onclick="closeSettingsModal()">✕</button>
       </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Mikrofon</div>
-        <select class="s-select" id="s-mic" onchange="updateMic()"></select>
-      </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Lautsprecher</div>
-        <select class="s-select" id="s-spk"></select>
-      </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Eingangslautstärke</div>
-        <div class="vol-row">
-          <input type="range" class="vol-slider" id="s-invol" min="0" max="200" value="100" oninput="updateVol('s-invol','lbl-invol')"/>
-          <span class="vol-val" id="lbl-invol">100%</span>
+      <div class="settings-modal-body">
+        <div class="setting-row">
+          <div class="setting-lbl">Dein Name</div>
+          <input class="s-input" id="s-name" oninput="saveName()"/>
         </div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Ausgangslautstärke</div>
-        <div class="vol-row">
-          <input type="range" class="vol-slider" id="s-outvol" min="0" max="200" value="100" oninput="updateVol('s-outvol','lbl-outvol')"/>
-          <span class="vol-val" id="lbl-outvol">100%</span>
+        <div class="setting-row">
+          <div class="setting-lbl">Mikrofon</div>
+          <select class="s-select" id="s-mic" onchange="updateMic()"></select>
         </div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Push-to-Talk Taste</div>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <span class="ptt-badge" id="ptt-key-disp">T</span>
-          <button class="btn-c" onclick="rebindPTT()">Neu belegen</button>
+        <div class="setting-row">
+          <div class="setting-lbl">Lautsprecher</div>
+          <select class="s-select" id="s-spk"></select>
         </div>
-      </div>
-      <div class="setting-row">
-        <div class="setting-lbl">Aktivierungstyp</div>
-        <select class="s-select" id="s-acttype" onchange="saveSettings()">
-          <option value="vad">Sprachaktivierung</option>
-          <option value="ptt">Push-to-Talk</option>
-        </select>
+        <div class="setting-row">
+          <div class="setting-lbl">Eingangslautstärke</div>
+          <div class="vol-row">
+            <input type="range" class="vol-slider" id="s-invol" min="0" max="200" value="100" oninput="updateVol('s-invol','lbl-invol')"/>
+            <span class="vol-val" id="lbl-invol">100%</span>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-lbl">Ausgangslautstärke</div>
+          <div class="vol-row">
+            <input type="range" class="vol-slider" id="s-outvol" min="0" max="200" value="100" oninput="updateVol('s-outvol','lbl-outvol')"/>
+            <span class="vol-val" id="lbl-outvol">100%</span>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-lbl">Push-to-Talk Taste</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span class="ptt-badge" id="ptt-key-disp">T</span>
+            <button class="btn-c" onclick="rebindPTT()">Neu belegen</button>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div class="setting-lbl">Aktivierungstyp</div>
+          <select class="s-select" id="s-acttype" onchange="saveSettings()">
+            <option value="vad">Sprachaktivierung</option>
+            <option value="ptt">Push-to-Talk</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -484,9 +523,10 @@ async function toggleConnect(){
   socket=io(url,{transports:['websocket'],timeout:8000,reconnection:false});
 
   socket.on('connect',()=>{
-    setStatus('ok',`Verbunden · ${addr}`,'');
-    document.getElementById('conn-btn').textContent='Trennen';
-    document.getElementById('conn-btn').classList.add('disconnect');
+    setStatus('ok',`Verbunden`,'');
+    document.getElementById('disconnected-ui').style.display='none';
+    document.getElementById('connected-ui').style.display='block';
+    document.getElementById('connected-server-text').textContent=addr;
     socket.emit('get-rooms',{},rooms=>renderRooms(rooms));
   });
 
@@ -494,8 +534,8 @@ async function toggleConnect(){
     const code=reason||'DISCONNECT';
     const desc=ERR_CODES[code]||reason||'Verbindung getrennt';
     setStatus('error','Getrennt',`[${code.toUpperCase().replace(/ /g,'_')}] ${desc}`);
-    document.getElementById('conn-btn').textContent='Verbinden';
-    document.getElementById('conn-btn').classList.remove('disconnect');
+    document.getElementById('disconnected-ui').style.display='block';
+    document.getElementById('connected-ui').style.display='none';
     document.getElementById('rooms-list').innerHTML='<div style="font-size:12px;color:var(--t3);padding:8px 10px;">Getrennt</div>';
     currentRoom=null; roomPeers.clear(); showWelcome();
   });
@@ -519,12 +559,14 @@ async function toggleConnect(){
   });
 
   socket.on('room-list',rooms=>renderRooms(rooms));
-  socket.on('server-list',list=>{ serverList=list; renderServerList(); });
-  socket.on('peer-joined',p=>{ roomPeers.set(p.id,{...p,speaking:false}); renderUsers(); addSys(`${p.name} ist beigetreten`); });
+  socket.on('server-list',list=>{ serverList=list; renderServerList(); updateRightPanel(); });
+  socket.on('peer-joined',p=>{ roomPeers.set(p.id,{...p,speaking:false,ping:0,packetLoss:0}); renderUsers(); addSys(`${p.name} ist beigetreten`); });
   socket.on('peer-left',p=>{ const name=roomPeers.get(p.id)?.name||'Jemand'; roomPeers.delete(p.id); renderUsers(); addSys(`${name} hat verlassen`); });
   socket.on('peer-muted',({id,muted})=>{ const p=roomPeers.get(id); if(p){p.muted=muted;renderUsers();} });
   socket.on('chat',msg=>appendChat(msg));
   socket.on('new-producer',async({producerId,producerPeer})=>{ await subscribeToProducer(producerId,producerPeer.id); });
+  socket.on('ping-check',(sentAt,cb)=>{ cb(sentAt); });
+  socket.on('peer-stats',({id,ping,packetLoss})=>{ const p=roomPeers.get(id); if(p){p.ping=ping;p.packetLoss=packetLoss;renderUsers();} });
   socket.on('consumer-closed',({consumerId})=>{ consumers.forEach((c,pid)=>{if(c.id===consumerId)consumers.delete(pid);}); });
 }
 
@@ -532,6 +574,7 @@ function setStatus(cls,text,errCode){
   document.getElementById('status-dot').className='status-dot'+(cls?' '+cls:'');
   document.getElementById('status-text').textContent=text;
   document.getElementById('err-code').textContent=errCode||'';
+  document.getElementById('status-bar').className='status-bar'+(cls?' '+cls:'');
 }
 
 // ── Rooms ────────────────────────────────────────────────────────────────────
@@ -719,13 +762,33 @@ function renderUsers(){
   el.innerHTML='';
   document.getElementById('room-sub').textContent=`${roomPeers.size+1} Nutzer`;
   const selfDiv=document.createElement('div'); selfDiv.className='user-item';
-  selfDiv.innerHTML=`<div class="u-av" id="my-avatar" style="background:var(--blue-bg);color:var(--blue);">${myName.charAt(0).toUpperCase()}${muted?'<div class="u-muted-badge">🔇</div>':''}</div><span class="u-name" style="color:var(--blue)">${esc(myName)} (Du)</span>`;
+  selfDiv.innerHTML=`<div class="u-av" id="my-avatar" style="background:var(--blue-bg);color:var(--blue);">${myName.charAt(0).toUpperCase()}${muted?'<div class="u-muted-badge">🔇</div>':''}</div><div style="flex:1"><span class="u-name" style="color:var(--blue)">${esc(myName)} (Du)</span></div>`;
   el.appendChild(selfDiv);
   roomPeers.forEach((p)=>{
     const d=document.createElement('div'); d.className='user-item';
-    d.innerHTML=`<div class="u-av ${p.speaking?'speaking':''}">${p.name.charAt(0).toUpperCase()}${p.muted?'<div class="u-muted-badge">🔇</div>':''}</div><span class="u-name">${esc(p.name)}</span>`;
+    const pingClass=p.ping<80?'stat-ping':p.ping<200?'stat-ping warn':'stat-ping bad';
+    const dur=p.connectedSince?formatDuration(Date.now()-p.connectedSince):'';
+    d.innerHTML=`
+      <div class="u-av ${p.speaking?'speaking':''}">${p.name.charAt(0).toUpperCase()}${p.muted?'<div class="u-muted-badge">🔇</div>':''}</div>
+      <div style="flex:1;min-width:0;">
+        <span class="u-name">${esc(p.name)}</span>
+        <div class="u-stats">
+          ${p.ping!==undefined?`<span class="${pingClass}">⚡${p.ping}ms</span>`:''}
+          ${p.packetLoss?`<span style="color:var(--red)">↓${p.packetLoss}%</span>`:''}
+          ${p.ip&&isAdmin?`<span class="stat-ip">🌐${esc(p.ip)}</span>`:''}
+          ${dur?`<span class="stat-time">⏱${dur}</span>`:''}
+        </div>
+      </div>`;
     el.appendChild(d);
   });
+}
+
+function formatDuration(ms){
+  const s=Math.floor(ms/1000);
+  if(s<60)return s+'s';
+  const m=Math.floor(s/60);
+  if(m<60)return m+'m';
+  return Math.floor(m/60)+'h '+( m%60)+'m';
 }
 
 // ── Chat ─────────────────────────────────────────────────────────────────────
@@ -755,6 +818,11 @@ const typeIcon ={ts:'🎧',gaming:'🎮',voice:'🎙',other:'🖥'};
 const typeColor={ts:'background:var(--blue-bg);color:var(--blue)',gaming:'background:#1e0d2e;color:#9b59b6',voice:'background:var(--green-bg);color:var(--green)',other:'background:var(--s3);color:var(--t2)'};
 const typeSec  ={ts:'TeamSpeak',gaming:'Gaming',voice:'Voice',other:'Sonstiges'};
 
+function updateRightPanel(){
+  const panel=document.getElementById('right-panel');
+  if(serverList.length>0){ panel.style.display='flex'; }
+  else { panel.style.display='none'; }
+}
 function renderServerList(){
   const el=document.getElementById('ip-list');
   if(!serverList.length){ el.innerHTML='<div style="font-size:12px;color:var(--t3);padding:4px 0;">Noch keine Server eingetragen.</div>'; return; }
@@ -794,13 +862,25 @@ async function adminLogin(){
   if(!socket?.connected){toast('[NO_CONNECTION] Nicht verbunden',true);return;}
   const addr=serverAddr.startsWith('http')?serverAddr:`http://${serverAddr}`;
   try{
-    const r=await fetch(`${addr}/api/admin/verify`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})});
-    const d=await r.json();
-    if(d.ok){ isAdmin=true; adminPassword=pw; document.getElementById('admin-login-form').style.display='none'; document.getElementById('admin-logged-in').style.display='block'; renderServerList(); toast('Admin-Modus aktiv'); }
-    else{ toast('[WRONG_PASSWORD] Falsches Passwort',true); }
+    const r=await fetch(`${addr}/api/admin/verify`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:pw})
+    });
+    if(!r.ok){toast(`[HTTP_${r.status}] Server-Fehler`,true);return;}
+    const text=await r.text();
+    let d;
+    try{d=JSON.parse(text);}catch(e){toast(`[PARSE_ERROR] Server antwortete kein JSON`,true);return;}
+    if(d.ok){
+      isAdmin=true; adminPassword=pw;
+      document.getElementById('admin-login-form').style.display='none';
+      document.getElementById('admin-logged-in').style.display='block';
+      document.getElementById('create-room-btn').style.display='flex';
+      renderServerList(); toast('Admin-Modus aktiv');
+    } else { toast('[WRONG_PASSWORD] Falsches Passwort',true); }
   }catch(e){ toast(`[AUTH_ERROR] ${e.message}`,true); }
 }
-function adminLogout(){ isAdmin=false; adminPassword=''; document.getElementById('admin-login-form').style.display='block'; document.getElementById('admin-logged-in').style.display='none'; document.getElementById('admin-pw').value=''; renderServerList(); toast('Admin abgemeldet'); }
+function adminLogout(){ isAdmin=false; adminPassword=''; document.getElementById('admin-login-form').style.display='block'; document.getElementById('admin-logged-in').style.display='none'; document.getElementById('create-room-btn').style.display='none'; document.getElementById('admin-pw').value=''; renderServerList(); toast('Admin abgemeldet'); }
 
 async function adminRequest(method,path,body){
   const addr=serverAddr.startsWith('http')?serverAddr:`http://${serverAddr}`;
@@ -863,14 +943,23 @@ let rebinding=false;
 function rebindPTT(){ rebinding=true; toast('Taste drücken...'); document.addEventListener('keydown',function h(e){ pttKey=e.key.toLowerCase(); localStorage.setItem('pttKey',pttKey); document.getElementById('ptt-key-disp').textContent=pttKey.toUpperCase(); document.removeEventListener('keydown',h); rebinding=false; toast('PTT: '+pttKey.toUpperCase()); }); }
 
 // ── Tabs ──────────────────────────────────────────────────────────────────────
-function showTab(n){ ['servers','settings'].forEach(t=>{ document.getElementById('panel-'+t).style.display=t===n?'block':'none'; document.getElementById('tab-'+t).classList.toggle('active',t===n); }); }
+function showTab(n){ /* legacy stub */ }
+function openSettingsModal(){
+  document.getElementById('settings-modal').style.display='flex';
+}
+function closeSettingsModal(){
+  document.getElementById('settings-modal').style.display='none';
+}
+function closeSettings(e){
+  if(e.target.id==='settings-modal') closeSettingsModal();
+}
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 function openModal(title,body,onOk){ document.getElementById('modal-title').textContent=title; document.getElementById('modal-body').innerHTML=body; modalCb=onOk; document.getElementById('modal').style.display='flex'; setTimeout(()=>{const f=document.querySelector('#modal-body input');if(f)f.focus();},50); }
 function closeModal(){ document.getElementById('modal').style.display='none'; modalCb=null; }
 function bgClose(e){ if(e.target.id==='modal')closeModal(); }
 async function modalOk(){ if(modalCb){ const r=await modalCb(); if(r!==false)closeModal(); } else closeModal(); }
-document.addEventListener('keydown',e=>{ if(rebinding)return; if(e.key==='Escape')closeModal(); if(e.key==='Enter'&&document.getElementById('modal').style.display==='flex'&&e.target.tagName!=='SELECT')modalOk(); });
+document.addEventListener('keydown',e=>{ if(rebinding)return; if(e.key==='Escape'){ closeModal(); closeSettingsModal(); } if(e.key==='Enter'&&document.getElementById('modal').style.display==='flex'&&e.target.tagName!=='SELECT')modalOk(); });
 
 // ── Toast ─────────────────────────────────────────────────────────────────────
 let toastT; function toast(msg,err){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.toggle('err',!!err); t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),3000); }
