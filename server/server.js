@@ -22,6 +22,15 @@ const CONFIG = {
   ]
 };
 
+// ── Server name ───────────────────────────────────────────────────────────────
+let serverName = 'Vociq Server';
+const serverNameFile = path.join(__dirname, 'servername.json');
+function loadServerName() {
+  try { if (fs.existsSync(serverNameFile)) serverName = JSON.parse(fs.readFileSync(serverNameFile,'utf8')).name || 'Vociq Server'; } catch {}
+}
+function saveServerName() { fs.writeFileSync(serverNameFile, JSON.stringify({name:serverName})); }
+loadServerName();
+
 // ── Server list ────────────────────────────────────────────────────────────────
 let serverList = [];
 function loadServerList() {
@@ -112,7 +121,18 @@ app.get('/api/rooms-info', adminAuth, (_, res) => {
   })));
 });
 
-app.get('/health', (_, res) => res.json({ ok: true, peers: peers.size, rooms: rooms.size, version: '2.1' }));
+// Server name API
+app.get('/api/servername', (_, res) => res.json({ name: serverName }));
+app.post('/api/servername', adminAuth, (req, res) => {
+  const { name } = req.body;
+  if (!name) return res.status(400).json({ error: 'Name fehlt' });
+  serverName = name.trim().slice(0, 50);
+  saveServerName();
+  io.emit('server-name', serverName);
+  res.json({ ok: true, name: serverName });
+});
+
+app.get('/health', (_, res) => res.json({ ok: true, peers: peers.size, rooms: rooms.size, version: '2.1', name: serverName }));
 
 function adminAuth(req, res, next) {
   const pw = req.headers['x-admin-password'] || req.body?.password;
@@ -182,6 +202,7 @@ io.on('connection', socket => {
 
   socket.emit('server-list', serverList);
   socket.emit('room-list', [...rooms.values()].map(r => r.toJSON()));
+  socket.emit('server-name', serverName);
 
   // Ping measurement
   const pingInterval = setInterval(() => {

@@ -90,6 +90,17 @@ function hideTSView() {
 
 // ── IPC ───────────────────────────────────────────────────────────────────────
 ipcMain.on('win-min',        () => win.minimize());
+ipcMain.on('notify', (_, title, body, icon) => {
+  const { Notification } = require('electron');
+  if (Notification.isSupported()) {
+    new Notification({
+      title,
+      body,
+      icon: path.join(__dirname, 'icon.ico'),
+      silent: false
+    }).show();
+  }
+});
 ipcMain.on('win-max',        () => win.isMaximized() ? win.unmaximize() : win.maximize());
 ipcMain.on('win-close',      () => win.close());
 ipcMain.on('copy',           (_, t) => clipboard.writeText(t));

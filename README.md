@@ -1,5 +1,7 @@
 # Voice Dashboard
 
+TeamSpeak-Alternative mit Auto-Updates über GitHub Releases.
+
 ---
 
 ## Einmalige GitHub-Einrichtung
